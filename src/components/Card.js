@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Card = (props) => {
-	const { item } = props;
-	console.log(item);
+	const { item, handleClick } = props;
 	return (
 		<CardBox>
 			<ImgBox>
@@ -16,8 +15,13 @@ export const Card = (props) => {
 					{item.title} <span>${item.price}</span>
 				</h2>
 				<Buttons>
-					<Button style={{ backgroundColor: '#F6D860' }}>Add to cart</Button>
-					<Link to={`/cart/${item.id}`}>
+					<Button
+						style={{ backgroundColor: '#F6D860' }}
+						onClick={() => handleClick(item.id)}
+					>
+						Add to cart
+					</Button>
+					<Link to={`/cart`}>
 						<Button style={{ backgroundColor: '#548CFF' }}>Buy Now!</Button>
 					</Link>
 				</Buttons>
@@ -104,7 +108,7 @@ const CardBox = styled.div`
 	&:hover ${Button} {
 		opacity: 1;
 		transform: translateY(20px);
-		transition-delay: 0.75s;
+		transition-delay: 0.55s;
 	}
 `;
 

@@ -1,32 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Card } from './Card';
-import { helpHttp } from '../helpers/helpHttp';
 import { Loader } from './Loader';
-export const Shop = () => {
-	const [items, setItems] = useState([]);
-	const [loading, setLoading] = useState(false);
-
-	useEffect(() => {
-		const fetchData = async () => {
-			let url = 'https://fakestoreapi.com/products/';
-			setLoading(true);
-
-			const res = await helpHttp().get(url);
-
-			setItems(res);
-			setLoading(false);
-		};
-
-		fetchData();
-	}, []);
-
+export const Shop = (props) => {
+	const { items, loading, handleClick } = props;
 	return (
 		<Section>
 			{loading && <Loader />}
 			{items.map((item) => (
-				<Card key={item.id} item={item} />
+				<Card key={item.id} item={item} handleClick={handleClick} />
 			))}
 		</Section>
 	);
