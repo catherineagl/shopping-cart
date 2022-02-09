@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, HashRouter as Router } from 'react-router-dom';
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -15,7 +15,6 @@ import { FiTrash2 } from 'react-icons/fi';
 import { Footer } from './components/Footer';
 
 toast.configure();
-
 const App = () => {
 	const [cart, setCart] = useState([]);
 	const [items, setItems] = useState([]);
@@ -108,7 +107,7 @@ const App = () => {
 	};
 
 	return (
-		<BrowserRouter>
+		<Router>
 			<Container>
 				<Nav />
 				<Routes>
@@ -137,7 +136,7 @@ const App = () => {
 
 				<Footer />
 			</Container>
-		</BrowserRouter>
+		</Router>
 	);
 };
 
